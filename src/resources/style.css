@@ -1,0 +1,28 @@
+body {
+	font-family: Helvetica;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: 3px solid grey;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+th, td {
+	padding: 10px;
+}
+
+a {
+	color: red;
+}
+
+hr {
+	margin-left: 350px;
+	margin-right: 350px;
+}
