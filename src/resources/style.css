@@ -3,8 +3,7 @@ body {
 }
 
 table {
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	table-layout: fixed;
 	border-collapse: collapse;
 	border: 3px solid grey;
@@ -15,7 +14,7 @@ h1, h2 {
 }
 
 th, td {
-	padding: 10px;
+	padding: 1em;
 }
 
 a {
@@ -23,6 +22,28 @@ a {
 }
 
 hr {
-	margin-left: 350px;
-	margin-right: 350px;
+	margin-left: 10em;
+	margin-right: 10em;
+}
+
+.canadian {
+	margin: 2em;
+
+}
+
+.russian {
+	margin: 2em;
+}
+
+@media only screen and (max-width: 830px) {
+	.canadian th, .canadian td {
+		padding: 0.3em;
+	}
+
+	.russian th, .russian td {
+		padding: 0.2em;
+	}
+	.russian {
+		margin: auto 0;
+	}
 }
