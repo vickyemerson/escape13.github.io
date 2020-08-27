@@ -43,7 +43,8 @@ hr {
 	.russian th, .russian td {
 		padding: 0.2em;
 	}
-	.russian {
+	.russian, .canadian {
 		margin: auto 0;
+		width: 95vw;
 	}
 }
