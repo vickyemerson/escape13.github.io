@@ -47,4 +47,7 @@ hr {
 	.russian th, .russian td {
 		padding: 0;
 	}
+	.russian table {
+		width: 100vw;
+	}
 }
