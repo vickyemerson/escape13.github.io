@@ -26,28 +26,25 @@ a {
 }
 
 hr {
-	margin-left: 10em;
-	margin-right: 10em;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .canadian {
-	margin: 2em;
-
+	margin-bottom: 4em;
 }
 
-.russian {
-	margin: 2em;
-}
+
 
 @media only screen and (max-width: 830px) {
 	.canadian th, .canadian td {
-		padding: 0.3em;
+		padding: 0;
 	}
 
 	.russian th, .russian td {
 		padding: 0;
 	}
-	.russian table {
+	table {
 		width: 100vw;
 	}
 }
