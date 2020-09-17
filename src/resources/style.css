@@ -4,6 +4,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100%;
 }
 
 body {
@@ -11,6 +12,8 @@ body {
 	margin: 0;
 	color: white;
 	background-color: black;
+	overflow: hidden;
+
 }
 
 a {
@@ -29,4 +32,6 @@ a {
 	flex-direction: column;
 	padding: 30px;
 	background-color: black;
+	height: 100%;
+
 }
