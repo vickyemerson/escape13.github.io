@@ -7,21 +7,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="./blink.js"></script>
 	</head>
 	<body>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-			<script>
-				$(function () { 
-  				  count = 0; 
-  				  wordsArray = ["Timur Valeev", "escape13"]; 
-  				  setInterval(function () { 
-    			    count++; 
-    			    $("#name").fadeOut(150, function () { 
-      			      $(this).text(wordsArray[count % wordsArray.length]).fadeIn(150); 
-    			    }); 
-                  }, 1300); 
-                }); 
-			</script>
 		<div class="container">
 			<h1 id="title">Hello! Name's<br><span id="name">Timur Valeev</span></h1>
 			<h4 id="education"><a href="https://kpfu.ru/liceum">Lyceum of N. I. Lobachevsky KFU</a> (Grade 11, 2021)</h4>
