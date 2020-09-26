@@ -110,7 +110,7 @@ a {
 		height: 50vh;
 	 }
 	 .project-image {
-		height: 15vh;
+		height: 23vh;
 	 }
 	 .project-title {
 		 font-size: 70%;
@@ -131,7 +131,7 @@ a {
 
  @media only screen and (max-width: 1025px) and (orientation: landscape){
 	.project-image {
-		height: 20vh;
+		height: 22vh;
 	}
 }
 
