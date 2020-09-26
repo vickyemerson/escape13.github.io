@@ -138,3 +138,16 @@ a {
 		overflow: scroll;
 	}
 }
+
+@media only screen and (max-width: 813px) and (orientation: landscape) {
+	.container {
+		display: none;
+	}
+
+	.project-container {
+		position: absolute;
+		margin: auto;
+		top: 16vh;
+		height: 76vh;
+	}
+}
