@@ -91,10 +91,10 @@ a {
 
  @media only screen and (max-width: 720px) {
 	 #title {
-		 font-size: 120%;
+		 font-size: 140%;
 	 }
 	 #education, #socials {
-		 font-size: 60%;
+		 font-size: 70%;
 	 }
 	 .project-container {
 		width: 94%;
@@ -104,10 +104,10 @@ a {
 		height: 20vh;
 	 }
 	 .project-title {
-		 font-size: 80%;
+		 font-size: 60%;
 	 }
 	 .project-description {
-		 font-size: 60%;
+		 font-size: 40%;
 	 }
  }
 
@@ -119,10 +119,10 @@ a {
 		font-size: 70%;
 	}
 	.project-title {
-		font-size: 70%;
+		font-size: 60%;
 	}
 	.project-description {
-		font-size: 50%;
+		font-size: 40%;
 	}
 	body {
 		overflow: scroll;
