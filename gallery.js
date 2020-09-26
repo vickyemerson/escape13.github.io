@@ -20,9 +20,6 @@ function update(index) {
     image.src = `src/images/${images[index]}`;
     title.innerHTML = titles[index];
     description.innerHTML = descriptions[index];
-    if (index === 1 && width < 720) {
-        image.style.height = "20vh";
-    }
 }
 
 previous.onclick = () => {

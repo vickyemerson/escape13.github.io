@@ -97,7 +97,7 @@ a {
 	 cursor: pointer;
  }
 
- @media only screen and (max-width: 770px) {
+ @media only screen and (max-width: 770px){
 	 #title {
 		 font-size: 140%;
 	 }
@@ -119,6 +119,17 @@ a {
 		 font-size: 60%;
 	 }
  }
+ @media only screen and (max-width: 1025px) and (orientation: landscape){
+	.project-image {
+		height: 21vh;
+	}
+}
+
+@media only screen and (max-height: 1367px) and (min-height: 720) and (orientation: portrait) {
+	.project-image {
+		height: 24vh;
+	}
+}
 
 @media only screen and (max-height: 630px) {
 	#title {
@@ -133,10 +144,12 @@ a {
 	.project-description {
 		font-size: 55%;
 	}
-	body {
-		overflow: scroll;
+	.container {
+		display:
 	}
 }
+
+
 
 @media only screen and (max-width: 813px) and (orientation: landscape) {
 	.container {
@@ -149,4 +162,8 @@ a {
 		top: 16vh;
 		height: 76vh;
 	}
+	.project-image {
+		height: 40vh;
+	}
+	
 }
