@@ -65,7 +65,7 @@ a {
 
 .project-image {
 	margin: 20px;
-	height: 33vh;
+	height: 27vh;
 	width: auto;
 }
 
@@ -88,14 +88,14 @@ a {
 	font-size: 150%;
  }
  
- #arrow-left, #arrow-right {
-	display: block;
-	text-align: center;
+ #previous, #next {
+	height: 100%;
+	padding-top: 27vh;
+ }
+ span {
+	 padding: 0 10px;
  }
 
- .arrow-left:hover, .arrow-right:hover {
-	 cursor: pointer;
- }
 
  @media only screen and (max-width: 770px){
 	 #title {
@@ -107,10 +107,10 @@ a {
 	 .project-container {
 		width: 94%;
 		left: 3%;
-		height: 48vh;
+		height: 50vh;
 	 }
 	 .project-image {
-		height: 20vh;
+		height: 15vh;
 	 }
 	 .project-title {
 		 font-size: 70%;
@@ -118,40 +118,33 @@ a {
 	 .project-description {
 		 font-size: 60%;
 	 }
+	 #previous, #next {
+		padding-top: 25vh;
+	 }
+	 body {
+		 overflow: hidden;
+	 }
+	 span {
+		padding: 0;
+	}
  }
+
  @media only screen and (max-width: 1025px) and (orientation: landscape){
 	.project-image {
-		height: 21vh;
+		height: 20vh;
 	}
 }
 
 @media only screen and (max-height: 1367px) and (min-height: 720) and (orientation: portrait) {
 	.project-image {
-		height: 24vh;
-	}
-}
-
-@media only screen and (max-height: 630px) {
-	#title {
-		font-size: 120%;
-	}
-	#education, #socials {
-		font-size: 70%;
-	}
-	.project-title {
-		font-size: 60%;
-	}
-	.project-description {
-		font-size: 55%;
-	}
-	.container {
-		display:
+		height: 22vh;
 	}
 }
 
 
 
-@media only screen and (max-width: 813px) and (orientation: landscape) {
+
+@media only screen and (max-width: 830px) and (orientation: landscape) {
 	.container {
 		display: none;
 	}
@@ -162,8 +155,23 @@ a {
 		top: 16vh;
 		height: 76vh;
 	}
-	.project-image {
-		height: 40vh;
+
+	.project-title {
+		font-size: 80%;
 	}
-	
+
+	.project-description {
+		font-size: 60%;
+	}
+
+	.project-image {
+		height: 34vh;
+	}
+	#previous, #next {
+		padding-top: 38vh;
+	 }
+
+	 body {
+		 overflow: hidden;
+	 }
 }
