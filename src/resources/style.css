@@ -39,11 +39,11 @@ a {
 	display: flex;
 	flex-direction: row;
 	background-color: black;
-	width: 94%;
-	left: 3%;
+	width: 60%;
+	left: 20%;
 	margin-bottom: 20px;
 	top: 2vh;
-	height: 50vh;
+	height: 54vh;
 	border: 1px solid lime;
 	align-items: center;
 }
@@ -62,15 +62,15 @@ a {
 
 .project-image {
 	margin: 20px;
-	height: 35vh;
+	height: 30vh;
 	width: auto;
 }
 
 .project-description {
-	font-size: 72%;
+	font-size: 100%;
 	font-weight: lighter;
 	margin-top: 0;
-	margin-bottom: 15px;
+	margin-bottom: 35px;
 	text-align: center;
 }
 
@@ -84,12 +84,47 @@ a {
 	margin: auto 15px;
 	font-size: 150%;
  }
+ 
+ .arrow-left:hover, .arrow-right:hover {
+	 cursor: pointer;
+ }
 
  @media only screen and (max-width: 720px) {
+	 #title {
+		 font-size: 150%;
+	 }
+	 #education, #socials {
+		 font-size: 80%;
+	 }
+	 .project-container {
+		width: 94%;
+		left: 3%;
+	 }
 	 .project-image {
 		height: 20vh;
 	 }
 	 .project-title {
 		 font-size: 93%;
 	 }
+	 .project-description {
+		 font-size: 72%;
+	 }
  }
+
+@media only screen and (max-height: 630px) {
+	#title {
+		font-size: 120%;
+	}
+	#education, #socials {
+		font-size: 70%;
+	}
+	.project-title {
+		font-size: 70%;
+	}
+	.project-description {
+		font-size: 50%;
+	}
+	body {
+		overflow: scroll;
+	}
+}
