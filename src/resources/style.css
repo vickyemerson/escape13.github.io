@@ -62,12 +62,12 @@ a {
 
 .project-image {
 	margin: 20px;
-	height: 30vh;
+	height: 33vh;
 	width: auto;
 }
 
 .project-description {
-	font-size: 100%;
+	font-size: 90%;
 	font-weight: lighter;
 	margin-top: 0;
 	margin-bottom: 35px;
