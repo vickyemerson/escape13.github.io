@@ -137,7 +137,7 @@ a {
 	}
 }
 
-@media only screen and (max-height: 1367px) and (min-height: 720) and (orientation: portrait) {
+@media only screen and (max-height: 1367px) and (min-height: 670px) and (orientation: portrait) {
 	.project-image {
 		height: 22vh;
 	}
