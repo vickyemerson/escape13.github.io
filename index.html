@@ -8,6 +8,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1">
 		<script>
+			document.getElementById("button").addEventListener("click", function() {
+  document.documentElement.requestFullScreen();
+  screen.orientation.lock("portrait-primary");
+
+ }, false);
 			screen.orientation.lock("portrait-primary");
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
