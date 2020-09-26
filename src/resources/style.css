@@ -45,7 +45,8 @@ a {
 	top: 2vh;
 	height: 54vh;
 	border: 1px solid lime;
-	align-items: center;
+	align-items: stretch;
+	flex-grow: 1;
 }
 
 .project {
@@ -85,6 +86,11 @@ a {
 	font-size: 150%;
  }
  
+ #arrow-left, #arrow-right {
+	display: block;
+	text-align: center;
+ }
+
  .arrow-left:hover, .arrow-right:hover {
 	 cursor: pointer;
  }

@@ -17,7 +17,7 @@ function update(index) {
     title.innerHTML = titles[index];
     description.innerHTML = descriptions[index];
     if (index === 1) {
-        image.style.height = "21vh";
+        image.style.height = "20vh";
     }
 }
 
