@@ -1,18 +1,15 @@
-html { 
-  background: url("../../src/images/background.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-}
-
 body {
 	font-family: 'Roboto Mono', monospace;
 	margin: 0;
 	color: white;
 	background-color: black;
 	overflow: hidden;
+	background: url("../../src/images/background.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100%;
 }
 
 a {
@@ -34,3 +31,23 @@ a {
 	height: 100%;
 
 }
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	width: 300px;
+	height: 200px;
+	margin: 30px auto auto auto;
+	border: 1px solid Lime;
+}
+
+.button:hover {
+	cursor: pointer;
+}
+
+ #button-text {
+	 font-size: 150%;
+	 color: Lime;
+ }
