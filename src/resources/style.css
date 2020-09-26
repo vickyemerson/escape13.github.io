@@ -93,7 +93,7 @@ a {
 	height: 100%;
 	padding-top: 27vh;
  }
- span {
+ .project-container span {
 	 padding: 0 10px;
  }
 
@@ -125,7 +125,7 @@ a {
 	 body {
 		 overflow: hidden;
 	 }
-	 span {
+	 .project-container span {
 		padding: 0;
 	}
  }
@@ -157,7 +157,7 @@ a {
 	body {
 		overflow: hidden;
 	}
-	span {
+	.project-container span {
 	   padding: 0;
    }
  }
