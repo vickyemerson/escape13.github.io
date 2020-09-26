@@ -11,6 +11,7 @@ body {
 	margin: 0;
 	color: white;
 	height: 100%;
+	overflow: hidden;
 }
 
 a {
@@ -96,7 +97,7 @@ a {
 	 padding: 0 10px;
  }
 
-
+ 
  @media only screen and (max-width: 770px){
 	 #title {
 		 font-size: 140%;
@@ -107,10 +108,10 @@ a {
 	 .project-container {
 		width: 94%;
 		left: 3%;
-		height: 50vh;
+		height: 60vh;
 	 }
 	 .project-image {
-		height: 23vh;
+		height: 25vh;
 	 }
 	 .project-title {
 		 font-size: 70%;
@@ -119,7 +120,7 @@ a {
 		 font-size: 60%;
 	 }
 	 #previous, #next {
-		padding-top: 25vh;
+		padding-top: 30vh;
 	 }
 	 body {
 		 overflow: hidden;
@@ -128,6 +129,7 @@ a {
 		padding: 0;
 	}
  }
+
 
  @media only screen and (max-width: 1025px) and (orientation: landscape){
 	.project-image {
