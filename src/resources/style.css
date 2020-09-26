@@ -1,15 +1,17 @@
-body {
-	font-family: 'Roboto Mono', monospace;
-	margin: 0;
-	color: white;
-	background-color: black;
-	overflow: hidden;
+html {
 	background: url("../../src/images/background.jpg") no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+}
+
+body {
+	font-family: 'Roboto Mono', monospace;
+	margin: 0;
+	color: white;
 	height: 100%;
+	overflow: hidden;
 }
 
 a {
@@ -20,7 +22,7 @@ a {
 	color: Lime;
 	margin: 0;
 	padding: 0;
-	font-size: 200%;
+	font-size: 175%;
 }
 
 .container {
@@ -32,22 +34,62 @@ a {
 
 }
 
-.button {
+.project-container {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	background-color: black;
+	width: 94%;
+	left: 3%;
+	margin-bottom: 20px;
+	top: 2vh;
+	height: 50vh;
+	border: 1px solid lime;
+	align-items: center;
+}
+
+.project {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: black;
-	width: 300px;
-	height: 200px;
-	margin: 30px auto auto auto;
-	border: 1px solid Lime;
+	flex-direction: column;
 }
 
-.button:hover {
-	cursor: pointer;
+.project-title {
+	color: lime;
+	margin-top: 0;
+}
+
+.project-image {
+	margin: 20px;
+	height: 35vh;
+	width: auto;
+}
+
+.project-description {
+	font-size: 72%;
+	font-weight: lighter;
+	margin-top: 0;
+	margin-bottom: 15px;
+	text-align: center;
 }
 
  #button-text {
-	 font-size: 150%;
-	 color: Lime;
+	font-size: 150%;
+	color: lime;
+ }
+
+ .arrow-left, .arrow-right {
+	color: lime;
+	margin: auto 15px;
+	font-size: 150%;
+ }
+
+ @media only screen and (max-width: 720px) {
+	 .project-image {
+		height: 20vh;
+	 }
+	 .project-title {
+		 font-size: 93%;
+	 }
  }

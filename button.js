@@ -1,17 +1,19 @@
-let button = document.getElementById("button");
-let buttonText = document.getElementById("button-text");
+let previous = document.getElementById("previous");
+let next = document.getElementById("next");
 
-let state = 0;
+let currentProject = 0;
+let totalProjects = 2;
 
-button.onclick = () => {
-    if (state === 0) {
-        buttonText.innerHTML = "Я";
-        state = 1;
-    } else if (state ===  1) {
-        buttonText.innerHTML = "Жду";
-        state = 2;
-    } else if (state === 2) {
-        buttonText.innerHTML = "Чуда";
-        state = 0;
+previous.onclick = () => {
+    currentProject--;
+    if (currentProject < 0) {
+        currentProject = totalProjects - 1;
+    }
+}
+
+next.onclick = () => {
+    currentProject++;
+    if (currentProject > totalProjects - 1) {
+        currentProject = 0;
     }
 }
