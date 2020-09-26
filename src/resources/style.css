@@ -91,10 +91,10 @@ a {
 
  @media only screen and (max-width: 720px) {
 	 #title {
-		 font-size: 150%;
+		 font-size: 130%;
 	 }
 	 #education, #socials {
-		 font-size: 80%;
+		 font-size: 75%;
 	 }
 	 .project-container {
 		width: 94%;
