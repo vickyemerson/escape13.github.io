@@ -140,7 +140,7 @@ a {
 	.project-container {
 	   width: 94%;
 	   left: 3%;
-	   height: 46vh;
+	   height: 50vh;
 	}
 	.project-image {
 	   height: 20vh;
@@ -152,7 +152,7 @@ a {
 		font-size: 50%;
 	}
 	#previous, #next {
-	   padding-top: 23vh;
+	   padding-top: 25vh;
 	}
 	body {
 		overflow: hidden;
