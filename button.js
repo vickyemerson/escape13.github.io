@@ -4,6 +4,8 @@ let image = document.getElementById("project-image");
 let title = document.getElementById("project-title");
 let description = document.getElementById("project-description");
 
+var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
 let currentProject = 0;
 let totalProjects = 2;
 
@@ -16,7 +18,7 @@ function update(index) {
     image.src = `src/images/${images[index]}`;
     title.innerHTML = titles[index];
     description.innerHTML = descriptions[index];
-    if (index === 1) {
+    if (index === 1 && width < 720) {
         image.style.height = "20vh";
     }
 }
