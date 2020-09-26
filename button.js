@@ -15,7 +15,6 @@ let descriptions = ["Comparative analysis of Euler, Euler-Richardson, Verlet and
 "A simulation of an assembly system that I proposed while working at ICL Techo. Instead of assembling computers consecutively, every member of the brigade assembles individually. With 6 people in the brigade, 232 seconds for full assembly, and 5 seconds for handover, the proposed system's efficiency is better by 28%."];
 
 function update(index) {
-    image.style.height = "33vh";
     image.src = `src/images/${images[index]}`;
     title.innerHTML = titles[index];
     description.innerHTML = descriptions[index];
