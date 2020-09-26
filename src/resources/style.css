@@ -66,7 +66,7 @@ a {
 
 .project-image {
 	margin: 20px;
-	height: 25vh;
+	height: 27vh;
 	width: auto;
 }
 
@@ -103,15 +103,15 @@ a {
 		 font-size: 140%;
 	 }
 	 #education, #socials {
-		 font-size: 80%;
+		 font-size: 70%;
 	 }
 	 .project-container {
 		width: 94%;
 		left: 3%;
-		height: 50vh;
+		height: 46vh;
 	 }
 	 .project-image {
-		height: 20vh;
+		height: 25vh;
 	 }
 	 .project-title {
 		 font-size: 70%;
@@ -120,7 +120,7 @@ a {
 		 font-size: 60%;
 	 }
 	 #previous, #next {
-		padding-top: 25vh;
+		padding-top: 23vh;
 	 }
 	 body {
 		 overflow: hidden;
@@ -130,6 +130,37 @@ a {
 	}
  }
 
+ @media only screen and (max-height: 670px) {
+	#title {
+		font-size: 140%;
+	}
+	#education, #socials {
+		font-size: 70%;
+	}
+	.project-container {
+	   width: 94%;
+	   left: 3%;
+	   height: 46vh;
+	}
+	.project-image {
+	   height: 20vh;
+	}
+	.project-title {
+		font-size: 70%;
+	}
+	.project-description {
+		font-size: 50%;
+	}
+	#previous, #next {
+	   padding-top: 23vh;
+	}
+	body {
+		overflow: hidden;
+	}
+	span {
+	   padding: 0;
+   }
+ }
 
  @media only screen and (max-width: 1025px) and (orientation: landscape){
 	.project-image {
