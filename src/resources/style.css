@@ -57,8 +57,11 @@ a {
 }
 
 .project-title {
-	color: lime;
 	margin-top: 0;
+}
+
+.project-title a {
+	color: lime;
 }
 
 .project-image {
