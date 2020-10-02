@@ -6,5 +6,5 @@ $(function () {
     $("#name").fadeOut(150, function () { 
       $(this).text(wordsArray[count % wordsArray.length]).fadeIn(150); 
     }); 
-   }, 2000); 
+   }, 3500); 
 }); 
