@@ -19,7 +19,7 @@ var hours = today.getHours();
 var mins = today.getMinutes();
 if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
     weekday++;
-} else if (hours * 60 + mins > 895) {
+} else if (hours * 60 + mins > 895 && weekday != 0) {
     weekday++;
 }
 
@@ -34,5 +34,4 @@ for (let i = 0; i < subjects[weekday].length; i++) {
     } else {
         container.innerHTML += `<div class="subject"><h3>${subjects[weekday][i]}</h3><p>${times[i]}</p><hr></div>`;
     }
-    
 }
