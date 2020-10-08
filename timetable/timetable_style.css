@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    font-size: 2vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subject {
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
