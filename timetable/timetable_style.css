@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Helvetica, sans-serif;
-    font-size: 1.8vh;
+    font-size: 1.5vh;
     overflow: hidden;
 }
 
@@ -30,7 +30,7 @@ body {
 .timer {
     text-align: center;
     margin-top: 3vh;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 
 
