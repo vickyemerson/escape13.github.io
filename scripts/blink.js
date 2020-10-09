@@ -1,6 +1,6 @@
 $(function () { 
   count = 0; 
-  wordsArray = ["Victoria Valeeva", "escape13"]; 
+  wordsArray = ["Timur Valeev", "escape13"]; 
   setInterval(function () { 
     count++; 
     $("#name").fadeOut(150, function () { 
