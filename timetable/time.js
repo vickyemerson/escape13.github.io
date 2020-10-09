@@ -10,6 +10,23 @@ const subjects = [
     ['Литература', 'Хореография', 'СОЧ', 'Математика', 'Математика', 'Физика', 'Физика']
 ];
 
+const prev = document.getElementById('left');
+const next = document.getElementById('right');
+
+function update(dayOfWeek) {
+    let container = document.getElementById('timetable');
+    container.innerHTML = `<h1>${days[dayOfWeek]}</h1>`;
+    for (let i = 0; i < subjects[dayOfWeek].length; i++) {
+        if (i == 0) {
+            container.innerHTML += `<div class="subject"><hr><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr></div>`;
+        } else if (i == subjects[weekday].length - 1) {
+            container.innerHTML += `<div class="subject"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p></div>`;
+        } else {
+            container.innerHTML += `<div class="subject"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr></div>`;
+        }
+    }
+}
+
 var today = new Date();
 var weekday = today.getDay();
 if (weekday === 0) {
@@ -23,15 +40,16 @@ if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
     weekday++;
 }
 
-let container = document.getElementById('timetable');
-container.innerHTML = `<h1>${days[weekday]}</h1>`;
+update(weekday);
 
-for (let i = 0; i < subjects[weekday].length; i++) {
-    if (i == 0) {
-        container.innerHTML += `<div class="subject"><hr><h3>${subjects[weekday][i]}</h3><p>${times[i]}</p><hr></div>`;
-    } else if (i == subjects[weekday].length - 1) {
-        container.innerHTML += `<div class="subject"><h3>${subjects[weekday][i]}</h3><p>${times[i]}</p></div>`;
-    } else {
-        container.innerHTML += `<div class="subject"><h3>${subjects[weekday][i]}</h3><p>${times[i]}</p><hr></div>`;
-    }
+prev.onclick = () => {
+    weekday--;
+    if (weekday === 0) weekday = 6;
+    update(weekday);
+}
+
+next.onclick = () => {
+    weekday++;
+    if (weekday === 7) weekday = 1;
+    update(weekday);
 }
