@@ -203,9 +203,9 @@ function handleGesture() {
 }
 
 // check time
-
+let alwaystoday = new Date();
 function update_status() {
-    timeToStartLesson();
+    if (weekday == alwaystoday.getDay()) timeToStartLesson();
     timeToEndLesson();
 }
 setInterval(update_status, 1000);
