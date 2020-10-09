@@ -14,16 +14,20 @@ const subjects = [
 ];
 
 let container = document.getElementById('timetable');
+let timer = document.getElementById('timer');
 
 function update(dayOfWeek) {
     container.innerHTML = `<h1>${days[dayOfWeek]}</h1>`;
+    let midbreak;
     for (let i = 0; i < subjects[dayOfWeek].length; i++) {
         if (i == 0) {
-            container.innerHTML += `<div class="subject" id="subject${i}"><hr><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr></div>`;
+            container.innerHTML += `<div class="subject" id="subject${i}"><hr><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr id="midbreak1"></div>`;
+            midbreak = 1;
         } else if (i == subjects[weekday].length - 1) {
             container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p></div>`;
         } else {
-            container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr></div>`;
+            midbreak++;
+            container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr id="midbreak${midbreak}"></div>`;
         }
     }
 }
@@ -46,6 +50,76 @@ let highlightCurrentLesson = weekday => {
     }
 }
 
+// time left to end of the lesson
+function timeToEndLesson() {
+    today = new Date();
+    weekday = today.getDay();
+    if (weekday === 0) weekday = 1;
+    let lessonsEnd = numLessons[weekday] === 6 ? 835 : 885;
+    if (today.getHours() * 60 + today.getMinutes() >= 510 && today.getHours() * 60 + today.getMinutes() < lessonsEnd) {
+        for (let i = 0; i < numLessons[weekday]; i++) {
+            let currentTime = new Date();
+            if (currentTime.getHours() * 60 + currentTime.getMinutes() >= start[i] && currentTime.getHours() * 60 + currentTime.getMinutes() < end[i]) {
+                timer.style.display = "block";
+                timer.innerHTML = "До конца урока: <br><br> ";
+                let hours = currentTime.getHours();
+                let mins = currentTime.getMinutes();
+                let seconds = currentTime.getSeconds();
+                let timeSeconds = hours * 3600 + mins * 60 + seconds;
+                let difference = end[i] * 60 - timeSeconds;
+                let minsLeft = Math.floor(difference / 60);
+                let secondsLeft = difference % 60;
+                if (minsLeft < 10) {
+                    timer.innerHTML += `0${minsLeft} `;
+                } else {
+                    timer.innerHTML += `${minsLeft} `;
+                }
+                
+                if (secondsLeft < 10) {
+                    timer.innerHTML += `: 0${secondsLeft}`;
+                } else {
+                    timer.innerHTML += `: ${secondsLeft}`;
+                }
+            }    
+        }
+    }
+}
+
+// time left to the start of the lesson
+function timeToStartLesson() {
+    let today = new Date();
+    let weekday = today.getDay();
+    for (let i = 0; i < numLessons[weekday] - 1; i++) {
+        if (today.getHours() * 60 + today.getMinutes() >= end[i] && today.getHours * 60 + today.getMinutes() < start[i + 1]) {
+            let hr = document.getElementById(`midbreak${i + 1}`);
+            hr.style.color = blue;
+            timer.style.display = "block";
+            timer.innerHTML = "До начала урока: <br><br>"
+            let hours = currentTime.getHours();
+            let mins = currentTime.getMinutes();
+            let seconds = currentTime.getSeconds();
+            let timeSeconds = hours * 3600 + mins * 60 + seconds;
+            let difference = start[i + 1] * 60 - timeSeconds;
+            let minsLeft = Math.floor(difference / 60);
+            let secondsLeft = difference % 60;
+            if (minsLeft < 10) {
+                timer.innerHTML += `0${minsLeft} `;
+            } else {
+                timer.innerHTML += `${minsLeft} `;
+            }
+                
+            if (secondsLeft < 10) {
+                timer.innerHTML += `: 0${secondsLeft}`;
+            } else {
+                timer.innerHTML += `: ${secondsLeft}`;
+            }
+            
+        }
+    }
+}
+
+// initial load
+
 var today = new Date();
 var weekday = today.getDay();
 if (weekday === 0) {
@@ -60,9 +134,15 @@ if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
 }
 
 update(weekday);
+
 today = new Date();
 weekday = today.getDay();
-highlightCurrentLesson(weekday);
+if (weekday != 0) highlightCurrentLesson(weekday);
+
+timeToEndLesson();
+timeToStartLesson();
+
+// interaction
 
 document.onkeydown = checkKey;
 
@@ -119,3 +199,11 @@ function handleGesture() {
         if (weekday === today.getDay()) highlightCurrentLesson(weekday);
     }
 }
+
+// check time
+
+function update_status() {
+  timeToStartLesson();
+  timeToEndLesson();
+}
+setInterval(update_status, 1000);

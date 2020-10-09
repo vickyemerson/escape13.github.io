@@ -30,7 +30,7 @@ body {
 .timer {
     text-align: center;
     margin-top: 3vh;
-    font-size: 2rem;
+    font-size: 1.4rem;
 }
 
 
@@ -42,6 +42,10 @@ body {
 .timer-divisor {
     margin-top: 3vh;
     width: 80%;
+}
+
+.timer-caption {
+    font-size: 1rem;
 }
 
 h3 {
