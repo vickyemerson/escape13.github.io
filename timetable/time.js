@@ -146,24 +146,24 @@ function timeToStartLesson() {
 
 var today = new Date();
 var weekday = today.getDay();
-if (weekday === 0) {
-    weekday = 1;
-}
 var hours = today.getHours();
 var mins = today.getMinutes();
 if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
     weekday++;
 } else if (hours * 60 + mins >= 885 && weekday - 1 != 0) {
     weekday++;
+} else if (weekday == 0) {
+    weekday = 1;
+} else {
+    today = new Date();
+    weekday = today.getDay();
 }
 
 update(weekday);
 
-today = new Date();
-weekday = today.getDay();
 
-if (weekday != 0) highlightCurrentLesson(weekday);
-if (weekday != 0) highlightCurrentBreak(weekday);
+if (alwaystoday.getDay() != 0) highlightCurrentLesson(weekday);
+if (alwaystoday.getDay() != 0) highlightCurrentBreak(weekday);
 
 timeToEndLesson();
 timeToStartLesson();
