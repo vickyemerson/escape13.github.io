@@ -102,3 +102,39 @@ function checkKey(e) {
         if (weekday === today.getDay()) highlightCurrentLesson(weekday);
     }
 }
+
+let touchstartX = 0;
+let touchstartY = 0;
+let touchendX = 0;
+let touchendY = 0;
+
+const gestureZone = document.getElementById('navigation');
+
+gestureZone.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+gestureZone.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+}, false); 
+
+function handleGesture() {
+    if (touchendX <= touchstartX) {
+        weekday++;
+        if (weekday === 7) weekday = 1;
+        update(weekday);
+        let today = new Date();
+        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+    }
+    
+    if (touchendX >= touchstartX) {
+        weekday--;
+        if (weekday === 0) weekday = 6;
+        update(weekday);
+        let today = new Date();
+        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+    }
+}
