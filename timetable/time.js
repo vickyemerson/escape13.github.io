@@ -87,6 +87,7 @@ function timeToEndLesson() {
                 } else {
                     timer.innerHTML += `: ${secondsLeft}`;
                 }
+                if (minsLeft == 0 && secondsLeft == 1) document.location.reload();
             }    
         }
     }
@@ -122,7 +123,7 @@ function timeToStartLesson() {
             } else {
                 timer.innerHTML += `: ${secondsLeft}`;
             }
-            return true;
+            if (minsLeft == 0 && secondsLeft == 1) document.location.reload();
         }
     }
 }
