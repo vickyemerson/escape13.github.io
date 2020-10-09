@@ -23,7 +23,7 @@ function update(dayOfWeek) {
         if (i == 0) {
             container.innerHTML += `<div class="subject" id="subject${i}"><hr><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr id="midbreak1"></div>`;
             midbreak = 1;
-        } else if (i == subjects[weekday].length - 1) {
+        } else if (i == subjects[dayOfWeek].length - 1) {
             container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p></div>`;
         } else {
             midbreak++;
@@ -53,11 +53,11 @@ let highlightCurrentLesson = weekday => {
 // time left to end of the lesson
 function timeToEndLesson() {
     today = new Date();
-    weekday = today.getDay();
-    if (weekday === 0) weekday = 1;
-    let lessonsEnd = numLessons[weekday] === 6 ? 835 : 885;
+    let dayweek = today.getDay();
+    if (dayweek === 0) dayweek = 1;
+    let lessonsEnd = numLessons[dayweek] === 6 ? 835 : 885;
     if (today.getHours() * 60 + today.getMinutes() >= 510 && today.getHours() * 60 + today.getMinutes() < lessonsEnd) {
-        for (let i = 0; i < numLessons[weekday]; i++) {
+        for (let i = 0; i < numLessons[dayweek]; i++) {
             let currentTime = new Date();
             if (currentTime.getHours() * 60 + currentTime.getMinutes() >= start[i] && currentTime.getHours() * 60 + currentTime.getMinutes() < end[i]) {
                 timer.style.display = "block";
@@ -88,16 +88,18 @@ function timeToEndLesson() {
 // time left to the start of the lesson
 function timeToStartLesson() {
     let today = new Date();
-    let weekday = today.getDay();
-    for (let i = 0; i < numLessons[weekday] - 1; i++) {
-        if (today.getHours() * 60 + today.getMinutes() >= end[i] && today.getHours * 60 + today.getMinutes() < start[i + 1]) {
+    let dayweek = today.getDay();
+    for (let i = 0; i < numLessons[dayweek] - 1; i++) {
+        if (today.getHours() * 60 + today.getMinutes() >= end[i] && today.getHours() * 60 + today.getMinutes() < start[i + 1]) {
             let hr = document.getElementById(`midbreak${i + 1}`);
-            hr.style.color = blue;
+            hr.style.color = 'blue';
+            hr.style.backgroundColor = 'blue';
+            hr.style.height = '2px';
             timer.style.display = "block";
             timer.innerHTML = "До начала урока: <br><br>"
-            let hours = currentTime.getHours();
-            let mins = currentTime.getMinutes();
-            let seconds = currentTime.getSeconds();
+            let hours = today.getHours();
+            let mins = today.getMinutes();
+            let seconds = today.getSeconds();
             let timeSeconds = hours * 3600 + mins * 60 + seconds;
             let difference = start[i + 1] * 60 - timeSeconds;
             let minsLeft = Math.floor(difference / 60);
@@ -203,7 +205,7 @@ function handleGesture() {
 // check time
 
 function update_status() {
-  timeToStartLesson();
-  timeToEndLesson();
+    timeToStartLesson();
+    timeToEndLesson();
 }
 setInterval(update_status, 1000);
