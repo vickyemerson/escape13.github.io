@@ -15,9 +15,6 @@ const subjects = [
 
 let container = document.getElementById('timetable');
 
-const prev = document.getElementById('left');
-const next = document.getElementById('right');
-
 function update(dayOfWeek) {
     container.innerHTML = `<h1>${days[dayOfWeek]}</h1>`;
     for (let i = 0; i < subjects[dayOfWeek].length; i++) {
@@ -66,22 +63,6 @@ update(weekday);
 today = new Date();
 weekday = today.getDay();
 highlightCurrentLesson(weekday);
-
-prev.onclick = () => {
-    weekday--;
-    if (weekday === 0) weekday = 6;
-    update(weekday);
-    let today = new Date();
-    if (weekday === today.getDay()) highlightCurrentLesson(weekday);
-}
-
-next.onclick = () => {
-    weekday++;
-    if (weekday === 7) weekday = 1;
-    update(weekday);
-    let today = new Date();
-    if (weekday === today.getDay()) highlightCurrentLesson(weekday);
-}
 
 document.onkeydown = checkKey;
 

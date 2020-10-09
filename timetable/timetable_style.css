@@ -33,12 +33,6 @@ body {
     font-size: 2rem;
 }
 
-#left, #right {
-    height: 300px;
-    padding-top: 200px;
-    width: 100%;
-    text-align: center;
-}
 
 #current {
     color: blue;
