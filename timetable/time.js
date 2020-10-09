@@ -16,6 +16,14 @@ const subjects = [
 let container = document.getElementById('timetable');
 let timer = document.getElementById('timer');
 
+let alwaystoday = new Date();
+
+function update_status() {
+    timeToStartLesson();
+    timeToEndLesson();
+}
+setInterval(update_status, 1000);
+
 function update(dayOfWeek) {
     container.innerHTML = `<h1>${days[dayOfWeek]}</h1>`;
     let midbreak;
@@ -54,7 +62,6 @@ let highlightCurrentLesson = weekday => {
 function timeToEndLesson() {
     today = new Date();
     let dayweek = today.getDay();
-    if (dayweek === 0) dayweek = 1;
     let lessonsEnd = numLessons[dayweek] === 6 ? 835 : 885;
     if (today.getHours() * 60 + today.getMinutes() >= 510 && today.getHours() * 60 + today.getMinutes() < lessonsEnd) {
         for (let i = 0; i < numLessons[dayweek]; i++) {
@@ -87,7 +94,7 @@ function timeToEndLesson() {
 
 // time left to the start of the lesson
 function timeToStartLesson() {
-    let today = new Date();
+    today = new Date();
     let dayweek = today.getDay();
     for (let i = 0; i < numLessons[dayweek] - 1; i++) {
         if (today.getHours() * 60 + today.getMinutes() >= end[i] && today.getHours() * 60 + today.getMinutes() < start[i + 1]) {
@@ -115,7 +122,7 @@ function timeToStartLesson() {
             } else {
                 timer.innerHTML += `: ${secondsLeft}`;
             }
-            
+            return true;
         }
     }
 }
@@ -131,7 +138,7 @@ var hours = today.getHours();
 var mins = today.getMinutes();
 if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
     weekday++;
-} else if (hours * 60 + mins > 895 && weekday != 0) {
+} else if (hours * 60 + mins >= 885 && weekday != 0) {
     weekday++;
 }
 
@@ -202,10 +209,4 @@ function handleGesture() {
     }
 }
 
-// check time
-let alwaystoday = new Date();
-function update_status() {
-    if (weekday == alwaystoday.getDay()) timeToStartLesson();
-    timeToEndLesson();
-}
-setInterval(update_status, 1000);
+
