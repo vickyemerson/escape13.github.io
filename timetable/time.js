@@ -103,7 +103,7 @@ gestureZone.addEventListener('touchend', function(event) {
 }, false); 
 
 function handleGesture() {
-    if (touchendX <= touchstartX) {
+    if (touchendX <= touchstartX && ((touchstartX - touchendX) / (Math.abs(touchstartY - touchendY >= 1)))) {
         weekday++;
         if (weekday === 7) weekday = 1;
         update(weekday);
@@ -111,7 +111,7 @@ function handleGesture() {
         if (weekday === today.getDay()) highlightCurrentLesson(weekday);
     }
     
-    if (touchendX >= touchstartX) {
+    if (touchendX >= touchstartX && ((touchendX - touchstartX) / (Math.abs(touchstartY - touchendY)) >= 1)) {
         weekday--;
         if (weekday === 0) weekday = 6;
         update(weekday);
