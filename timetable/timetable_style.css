@@ -26,6 +26,12 @@ body {
     text-align: center;
 }
 
+.timer {
+    text-align: center;
+    margin-top: 3vh;
+    font-size: 2rem;
+}
+
 #left, #right {
     height: 300px;
     padding-top: 200px;
@@ -36,6 +42,11 @@ body {
 #current {
     color: blue;
     text-align: center;
+}
+
+.timer-divisor {
+    margin-top: 3vh;
+    width: 80%;
 }
 
 h3 {

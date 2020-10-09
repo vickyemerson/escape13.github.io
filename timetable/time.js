@@ -83,3 +83,22 @@ next.onclick = () => {
     if (weekday === today.getDay()) highlightCurrentLesson(weekday);
 }
 
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode === 37) {
+        weekday--;
+        if (weekday === 0) weekday = 6;
+        update(weekday);
+        let today = new Date();
+        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+    }
+    if (e.keyCode === 39) {
+        weekday++;
+        if (weekday === 7) weekday = 1;
+        update(weekday);
+        let today = new Date();
+        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+    }
+}
