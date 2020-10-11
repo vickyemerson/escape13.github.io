@@ -19,6 +19,10 @@ let timer = document.getElementById('timer');
 let alwaystoday = new Date();
 
 function update_status() {
+    if (weekday == alwaystoday.getDay()) {
+        highlightCurrentLesson(weekday);
+        highlightCurrentBreak(weekday);
+    }
     timeToStartLesson();
     timeToEndLesson();
 }
@@ -54,6 +58,20 @@ let highlightCurrentLesson = weekday => {
             } else {
                 currentLesson.innerHTML = `<h3 style="color: blue">${subjects[weekday][i]}</h3><p>${times[i]}</p><hr>`;
             }
+        }
+    }
+}
+
+let highlightCurrentBreak = weekday => {
+    for (let i = 0; i < numLessons[weekday] - 1; ++i) {
+        hours = today.getHours();
+        mins = today.getMinutes();
+        let timeToMins = hours * 60 + mins;
+        if (timeToMins >= end[i] && timeToMins < start[i + 1]) {
+            let hr = document.getElementById(`midbreak${i + 1}`);
+            hr.style.color = 'blue';
+            hr.style.backgroundColor = 'blue';
+            hr.style.height = '2px';
         }
     }
 }
@@ -99,10 +117,6 @@ function timeToStartLesson() {
     let dayweek = today.getDay();
     for (let i = 0; i < numLessons[dayweek] - 1; i++) {
         if (today.getHours() * 60 + today.getMinutes() >= end[i] && today.getHours() * 60 + today.getMinutes() < start[i + 1]) {
-            let hr = document.getElementById(`midbreak${i + 1}`);
-            hr.style.color = 'blue';
-            hr.style.backgroundColor = 'blue';
-            hr.style.height = '2px';
             timer.style.display = "block";
             timer.innerHTML = "До начала урока: <br><br>"
             let hours = today.getHours();
@@ -133,13 +147,13 @@ function timeToStartLesson() {
 var today = new Date();
 var weekday = today.getDay();
 if (weekday === 0) {
-    weekday++;
+    weekday = 1;
 }
 var hours = today.getHours();
 var mins = today.getMinutes();
 if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
     weekday++;
-} else if (hours * 60 + mins >= 885 && weekday != 0) {
+} else if (hours * 60 + mins >= 885 && weekday - 1 != 0) {
     weekday++;
 }
 
@@ -147,11 +161,13 @@ update(weekday);
 
 today = new Date();
 weekday = today.getDay();
+
 if (weekday != 0) highlightCurrentLesson(weekday);
+if (weekday != 0) highlightCurrentBreak(weekday);
 
 timeToEndLesson();
 timeToStartLesson();
-
+if (weekday === 0) weekday = 1;
 // interaction
 
 document.onkeydown = checkKey;
@@ -163,14 +179,20 @@ function checkKey(e) {
         if (weekday === 0) weekday = 6;
         update(weekday);
         let today = new Date();
-        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+        if (weekday === today.getDay()) {
+            highlightCurrentLesson(weekday);
+            highlightCurrentBreak(weekday);
+        }
     }
     if (e.keyCode === 39) {
         weekday++;
         if (weekday === 7) weekday = 1;
         update(weekday);
         let today = new Date();
-        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+        if (weekday === today.getDay()) {
+            highlightCurrentLesson(weekday);
+            highlightCurrentBreak(weekday);
+        }
     }
 }
 
@@ -194,11 +216,15 @@ gestureZone.addEventListener('touchend', function(event) {
 
 function handleGesture() {
     if (touchendX <= touchstartX && ((touchstartX - touchendX) / (Math.abs(touchstartY - touchendY))) >= 1) {
+        console.log(weekday);
         weekday++;
         if (weekday === 7) weekday = 1;
         update(weekday);
         let today = new Date();
-        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+        if (weekday === today.getDay()) {
+            highlightCurrentLesson(weekday);
+            highlightCurrentBreak(weekday);
+        }
     }
     
     if (touchendX >= touchstartX && ((touchendX - touchstartX) / (Math.abs(touchstartY - touchendY))) >= 1) {
@@ -206,8 +232,12 @@ function handleGesture() {
         if (weekday === 0) weekday = 6;
         update(weekday);
         let today = new Date();
-        if (weekday === today.getDay()) highlightCurrentLesson(weekday);
+        if (weekday === today.getDay()) {
+            highlightCurrentLesson(weekday);
+            highlightCurrentBreak(weekday);
+        }
     }
 }
+
 
 
