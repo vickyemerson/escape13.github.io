@@ -1,8 +1,7 @@
 const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-const times = ['8.30 - 9.10', '9.15 - 9.55', '10.15 - 10.55', '11.15 - 11.55', '12.15 - 12.55', '13.15 - 13.55', '14.05 - 14.45'];
-const numLessons = [0, 7, 6, 6, 7, 7, 7];
-const start = [510, 555, 615, 675, 735, 795, 845];
-const end = [550, 595, 655, 715, 775, 835, 885];
+const times = ['8.30 - 9.10', '9.15 - 9.55', '10.15 - 10.55', '11.15 - 11.55', '12.15 - 12.55', '13.15 - 13.55', '14.05 - 14.45', '14.50 - 15.25', '15.30 - 16.10', '16.15 - 16.55'];
+const start = [510, 555, 615, 675, 735, 795, 845, 890, 930, 975];
+const end = [550, 595, 655, 715, 775, 835, 885, 925, 970, 1015];
 const subjects = [
     [],
     ['Физика', 'ОБЖ', 'Математика', 'Математика', 'Физ-ра', 'Физ-ра', 'Английский'],
@@ -12,6 +11,7 @@ const subjects = [
     ['Информатика', 'Информатика', 'СОЧ', 'Математика', 'Математика', 'Физика', 'Русский'],
     ['Литература', 'Хореография', 'СОЧ', 'Математика', 'Математика', 'Физика', 'Физика']
 ];
+const lessonStart = [0, 0, 0, 0, 0, 0, 0];
 
 let container = document.getElementById('timetable');
 let timer = document.getElementById('timer');
@@ -19,9 +19,9 @@ let timer = document.getElementById('timer');
 let alwaystoday = new Date();
 
 function update_status() {
-    if (weekday == alwaystoday.getDay()) {
-        highlightCurrentLesson(weekday);
-        highlightCurrentBreak(weekday);
+    if (weekday_init == alwaystoday.getDay()) {
+        highlightCurrentLesson(weekday_init);
+        highlightCurrentBreak(weekday_init);
     }
     timeToStartLesson();
     timeToEndLesson();
@@ -33,39 +33,40 @@ function update(dayOfWeek) {
     let midbreak;
     for (let i = 0; i < subjects[dayOfWeek].length; i++) {
         if (i == 0) {
-            container.innerHTML += `<div class="subject" id="subject${i}"><hr><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr id="midbreak1"></div>`;
+            container.innerHTML += `<div class="subject" id="subject${i}"><hr><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i + lessonStart[dayOfWeek]]}</p><hr id="midbreak1"></div>`;
             midbreak = 1;
         } else if (i == subjects[dayOfWeek].length - 1) {
-            container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p></div>`;
+            container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i + lessonStart[dayOfWeek]]}</p></div>`;
         } else {
             midbreak++;
-            container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i]}</p><hr id="midbreak${midbreak}"></div>`;
+            container.innerHTML += `<div class="subject" id="subject${i}"><h3>${subjects[dayOfWeek][i]}</h3><p>${times[i + lessonStart[dayOfWeek]]}</p><hr id="midbreak${midbreak}"></div>`;
         }
     }
 }
 
-let highlightCurrentLesson = weekday => {
-    for (let i = 0; i < numLessons[weekday]; ++i) {
-        hours = today.getHours();
-        mins = today.getMinutes();
+function highlightCurrentLesson(dayOfWeek) {
+    for (let i = 0; i < subjects[dayOfWeek].length; ++i) {
+        let td = new Date();
+        hours = td.getHours();
+        mins = td.getMinutes();
         let timeToMins = hours * 60 + mins;
-        if (timeToMins >= start[i] && timeToMins < end[i]) {
+        if (timeToMins >= start[i + lessonStart[dayOfWeek]] && timeToMins < end[i + lessonStart[dayOfWeek]]) {
             let currentLesson = document.getElementById(`subject${i}`);
             if (i == 0) {
-                currentLesson.innerHTML = `<hr><h3 style="color: blue">${subjects[weekday][i]}</h3><p>${times[i]}</p><hr>`;
-            } else if (i == subjects[weekday].length - 1) {
-                currentLesson.innerHTML = `<h3 style="color: blue">${subjects[weekday][i]}</h3><p>${times[i]}</p>`;
+                currentLesson.innerHTML = `<hr><h3 style="color: blue">${subjects[dayOfWeek][i]}</h3><p>${times[i + lessonStart[dayOfWeek]]}</p><hr>`;
+            } else if (i == subjects[dayOfWeek].length - 1) {
+                currentLesson.innerHTML = `<h3 style="color: blue">${subjects[dayOfWeek][i]}</h3><p>${times[i + lessonStart[dayOfWeek]]}</p>`;
             } else {
-                currentLesson.innerHTML = `<h3 style="color: blue">${subjects[weekday][i]}</h3><p>${times[i]}</p><hr>`;
+                currentLesson.innerHTML = `<h3 style="color: blue">${subjects[dayOfWeek][i]}</h3><p>${times[i + lessonStart[dayOfWeek]]}</p><hr>`;
             }
         }
     }
 }
 
-let highlightCurrentBreak = weekday => {
-    for (let i = 0; i < numLessons[weekday] - 1; ++i) {
-        hours = today.getHours();
-        mins = today.getMinutes();
+function highlightCurrentBreak(dayOfWeek) {
+    for (let i = 0; i < subjects[dayOfWeek].length - 1; ++i) {
+        hours = alwaystoday.getHours();
+        mins = alwaystoday.getMinutes();
         let timeToMins = hours * 60 + mins;
         if (timeToMins >= end[i] && timeToMins < start[i + 1]) {
             let hr = document.getElementById(`midbreak${i + 1}`);
@@ -80,11 +81,12 @@ let highlightCurrentBreak = weekday => {
 function timeToEndLesson() {
     today = new Date();
     let dayweek = today.getDay();
-    let lessonsEnd = numLessons[dayweek] === 6 ? 835 : 885;
-    if (today.getHours() * 60 + today.getMinutes() >= 510 && today.getHours() * 60 + today.getMinutes() < lessonsEnd) {
-        for (let i = 0; i < numLessons[dayweek]; i++) {
+    let lessonsEnd = end[subjects[dayweek].length - 1];
+    let lessonsStart = start[lessonStart[dayweek]];
+    if (today.getHours() * 60 + today.getMinutes() >= lessonsStart && today.getHours() * 60 + today.getMinutes() < lessonsEnd) {
+        for (let i = 0; i < subjects[dayweek].length; i++) {
             let currentTime = new Date();
-            if (currentTime.getHours() * 60 + currentTime.getMinutes() >= start[i] && currentTime.getHours() * 60 + currentTime.getMinutes() < end[i]) {
+            if (currentTime.getHours() * 60 + currentTime.getMinutes() >= start[i + lessonStart[dayweek]] && currentTime.getHours() * 60 + currentTime.getMinutes() < end[i + lessonStart[dayweek]]) {
                 timer.style.display = "block";
                 timer.innerHTML = "До конца урока: <br><br> ";
                 let hours = currentTime.getHours();
@@ -115,8 +117,8 @@ function timeToEndLesson() {
 function timeToStartLesson() {
     today = new Date();
     let dayweek = today.getDay();
-    for (let i = 0; i < numLessons[dayweek] - 1; i++) {
-        if (today.getHours() * 60 + today.getMinutes() >= end[i] && today.getHours() * 60 + today.getMinutes() < start[i + 1]) {
+    for (let i = 0; i < subjects[dayweek].length - 1; i++) {
+        if (today.getHours() * 60 + today.getMinutes() >= end[i + lessonStart[dayweek]] && today.getHours() * 60 + today.getMinutes() < start[i + 1 + lessonStart[dayweek]]) {
             timer.style.display = "block";
             timer.innerHTML = "До начала урока: <br><br>"
             let hours = today.getHours();
@@ -142,57 +144,53 @@ function timeToStartLesson() {
     }
 }
 
-// initial load
+var today_init = new Date();
+var weekday_init = today_init.getDay();
+var hours_init = today_init.getHours();
+var mins_init = today_init.getMinutes();
 
-var today = new Date();
-var weekday = today.getDay();
-var hours = today.getHours();
-var mins = today.getMinutes();
-if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
-    weekday++;
-} else if (hours * 60 + mins >= 885 && weekday - 1 != 0) {
-    weekday++;
-} else if (weekday == 0) {
-    weekday = 1;
+let timetomin_init = hours_init * 60 + mins_init;
+let lessonsFinished = false;
+if (weekday_init === 0) {
+    weekday_init = 1;
 } else {
-    today = new Date();
-    weekday = today.getDay();
+    if (timetomin_init >= end[subjects[weekday_init].length - 1 + lessonStart[weekday_init]]) {
+        weekday_init++;
+        lessonsFinished = true;
+    }
 }
 
-if (weekday === 7) weekday = 1;
 
-update(weekday);
+update(weekday_init);
 
-if (alwaystoday.getDay() != 0) highlightCurrentLesson(weekday);
-if (alwaystoday.getDay() != 0) highlightCurrentBreak(weekday);
+if (alwaystoday.getDay() != 0 && !lessonsFinished) highlightCurrentLesson(weekday_init);
+if (alwaystoday.getDay() != 0 && !lessonsFinished) highlightCurrentBreak(weekday_init);
 
 timeToEndLesson();
 timeToStartLesson();
-if (weekday === 0) weekday = 1;
-// interaction
 
 document.onkeydown = checkKey;
 
 function checkKey(e) {
     e = e || window.event;
     if (e.keyCode === 37) {
-        weekday--;
-        if (weekday === 0) weekday = 6;
-        update(weekday);
+        weekday_init--;
+        if (weekday_init === 0) weekday = 6;
+        update(weekday_init);
         let today = new Date();
-        if (weekday === today.getDay()) {
-            highlightCurrentLesson(weekday);
-            highlightCurrentBreak(weekday);
+        if (weekday_init === today.getDay()) {
+            highlightCurrentLesson(weekday_init);
+            highlightCurrentBreak(weekday_init);
         }
     }
     if (e.keyCode === 39) {
-        weekday++;
-        if (weekday === 7) weekday = 1;
-        update(weekday);
+        weekday_init++;
+        if (weekday_init === 7) weekday_init = 1;
+        update(weekday_init);
         let today = new Date();
-        if (weekday === today.getDay()) {
-            highlightCurrentLesson(weekday);
-            highlightCurrentBreak(weekday);
+        if (weekday_init === today.getDay()) {
+            highlightCurrentLesson(weekday_init);
+            highlightCurrentBreak(weekday_init);
         }
     }
 }
@@ -217,28 +215,25 @@ gestureZone.addEventListener('touchend', function(event) {
 
 function handleGesture() {
     if (touchendX <= touchstartX && ((touchstartX - touchendX) / (Math.abs(touchstartY - touchendY))) >= 1) {
-        console.log(weekday);
-        weekday++;
-        if (weekday === 7) weekday = 1;
-        update(weekday);
+        console.log(weekday_init);
+        weekday_init++;
+        if (weekday_init === 7) weekday_init = 1;
+        update(weekday_init);
         let today = new Date();
-        if (weekday === today.getDay()) {
-            highlightCurrentLesson(weekday);
-            highlightCurrentBreak(weekday);
+        if (weekday_init === today.getDay()) {
+            highlightCurrentLesson(weekday_init);
+            highlightCurrentBreak(weekday_init);
         }
     }
     
     if (touchendX >= touchstartX && ((touchendX - touchstartX) / (Math.abs(touchstartY - touchendY))) >= 1) {
-        weekday--;
-        if (weekday === 0) weekday = 6;
-        update(weekday);
+        weekday_init--;
+        if (weekday_init === 0) weekday_init = 6;
+        update(weekday_init);
         let today = new Date();
-        if (weekday === today.getDay()) {
-            highlightCurrentLesson(weekday);
-            highlightCurrentBreak(weekday);
+        if (weekday_init === today.getDay()) {
+            highlightCurrentLesson(weekday_init);
+            highlightCurrentBreak(weekday_init);
         }
     }
 }
-
-
-
