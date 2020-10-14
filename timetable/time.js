@@ -156,6 +156,7 @@ if (weekday_init === 0) {
 } else {
     if (timetomin_init >= end[subjects[weekday_init].length - 1 + lessonStart[weekday_init]]) {
         weekday_init++;
+        if (weekday_init === 7) weekday_init = 1;
         lessonsFinished = true;
     }
 }
