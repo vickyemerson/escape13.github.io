@@ -23,28 +23,58 @@ function update(index) {
     description.innerHTML = descriptions[index];
 }
 
-previous.onclick = () => {
-    currentProject--;
-    if (currentProject < 0) {
-        currentProject = totalProjects - 1;
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode === 37) {
+        currentProject++;
+        if (currentProject > totalProjects - 1) {
+            currentProject = 0;
+        }
+        update(currentProject);
     }
-    update(currentProject);
+    if (e.keyCode === 39) {
+        currentProject++;
+        if (currentProject > totalProjects - 1) {
+            currentProject = 0;
+        }
+        update(currentProject);
+    }
 }
 
-next.onclick = () => {
-    currentProject++;
-    if (currentProject > totalProjects - 1) {
-        currentProject = 0;
-    }
-    update(currentProject);
-}
+let touchstartX = 0;
+let touchstartY = 0;
+let touchendX = 0;
+let touchendY = 0;
 
-function nextKeyboard() {
-    currentProject++;
-    if (currentProject > totalProjects - 1) {
-        currentProject = 0;
-    }
-    update(currentProject);
-}
+const gestureZone = document.getElementById('project-container');
 
-document.onkeypress = nextKeyboard;
+gestureZone.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+gestureZone.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+}, false); 
+
+function handleGesture() {
+    if (touchendX <= touchstartX && ((touchstartX - touchendX) / (Math.abs(touchstartY - touchendY))) >= 1.6) {
+        currentProject++;
+        if (currentProject > totalProjects - 1) {
+            currentProject = 0;
+        }
+        update(currentProject);
+    }
+    
+    if (touchendX >= touchstartX && ((touchendX - touchstartX) / (Math.abs(touchstartY - touchendY))) >= 1.6) {
+        currentProject++;
+        if (currentProject > totalProjects - 1) {
+            currentProject = 0;
+        }
+        update(currentProject);
+    }
+}
