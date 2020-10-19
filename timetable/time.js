@@ -159,8 +159,9 @@ if ((weekday === 2 || weekday === 3) && (hours * 60 + mins > 835)) {
     weekday = today.getDay();
 }
 
-update(weekday);
+if (weekday === 7) weekday = 1;
 
+update(weekday);
 
 if (alwaystoday.getDay() != 0) highlightCurrentLesson(weekday);
 if (alwaystoday.getDay() != 0) highlightCurrentBreak(weekday);
