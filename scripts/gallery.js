@@ -34,8 +34,13 @@ function checkKey(e) {
             currentProject = totalProjects - 1;
         }
         update(currentProject);
-    }
-    if (e.keyCode === 39) {
+    } else if (e.keyCode === 39) {
+        currentProject++;
+        if (currentProject > totalProjects - 1) {
+            currentProject = 0;
+        }
+        update(currentProject);
+    } else {
         currentProject++;
         if (currentProject > totalProjects - 1) {
             currentProject = 0;
