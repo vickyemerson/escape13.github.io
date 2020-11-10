@@ -45,7 +45,7 @@ a {
 	height: 54vh;
 	border: 1px solid lime;
 	flex-grow: 1;
-	padding-bottom: 5px;
+	padding-bottom: 12px;
 }
 
 .project-container {
@@ -82,7 +82,7 @@ a {
 	font-size: 80%;
 	font-weight: lighter;
 	margin-top: 0;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	text-align: center;
 }
 
