@@ -11,6 +11,7 @@ body {
 	margin: 0;
 	color: white;
 	height: 100%;
+	overflow: hidden;
 }
 
 a {
@@ -33,10 +34,10 @@ a {
 
 }
 
-.project-container {
+.outer-project {
 	position: relative;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	background-color: black;
 	width: 60%;
 	left: 20%;
@@ -44,6 +45,16 @@ a {
 	top: 2vh;
 	height: 54vh;
 	border: 1px solid lime;
+	align-items: stretch;
+	flex-grow: 1;
+	padding-bottom: 10px;
+}
+
+.project-container {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	background-color: black;
 	align-items: stretch;
 	flex-grow: 1;
 }
@@ -70,7 +81,7 @@ a {
 }
 
 .project-description {
-	font-size: 90%;
+	font-size: 80%;
 	font-weight: lighter;
 	margin-top: 0;
 	margin-bottom: 35px;
@@ -96,6 +107,24 @@ a {
 	 padding: 0 5px;
  }
 
+ .dot {
+	 border-radius: 50%;
+	 background-color: black;
+	 border: 1px solid lime;
+	 width: 10px;
+	 height: 10px;
+	 display: inline-block;
+	 margin-left: 3px;
+	 margin-right: 3px;
+ }
+
+
+
+ @media only screen and (max-width: 1242px) and (max-height: 2688px) and (orientation: portrait) {
+	 .arrow-left, .arrow-right {
+		 display: none;
+	 }
+ }
  
  @media only screen and (max-width: 770px){
 	 #title {
@@ -104,10 +133,10 @@ a {
 	 #education, #socials {
 		 font-size: 70%;
 	 }
-	 .project-container {
+	 .outer-project {
 		width: 94%;
 		left: 3%;
-		height: 46vh;
+		height: 48vh;
 	 }
 	 .project-image {
 		height: 25vh;
@@ -116,10 +145,10 @@ a {
 		 font-size: 70%;
 	 }
 	 .project-description {
-		 font-size: 60%;
+		 font-size: 55%;
 	 }
 	 #previous, #next {
-		padding-top: 23vh;
+		padding-top: 24vh;
 	 }
 	 body {
 		 overflow: hidden;
@@ -136,10 +165,14 @@ a {
 	#education, #socials {
 		font-size: 70%;
 	}
-	.project-container {
+	.outer-project {
 	   width: 94%;
 	   left: 3%;
-	   height: 50vh;
+	   height: 52vh;
+	}
+	.project-container {
+		width: 94%;
+		left: 3%;
 	}
 	.project-image {
 	   height: 20vh;
@@ -151,7 +184,7 @@ a {
 		font-size: 50%;
 	}
 	#previous, #next {
-	   padding-top: 25vh;
+	   padding-top: 26vh;
 	}
 	body {
 		overflow: hidden;
@@ -171,6 +204,13 @@ a {
 	.project-image {
 		height: 22vh;
 	}
+	.arrow-left, .arrow-right {
+		display: none;
+	}
+	.project {
+		width: 90%;
+		margin: auto;
+	}
 }
 
 
@@ -181,7 +221,7 @@ a {
 		display: none;
 	}
 
-	.project-container {
+	.outer-project {
 		position: absolute;
 		margin: auto;
 		top: 16vh;

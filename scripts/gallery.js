@@ -3,6 +3,7 @@ let next = document.getElementById("next");
 let image = document.getElementById("project-image");
 let title = document.getElementById("project-title");
 let description = document.getElementById("project-description");
+let dots = document.getElementById("dots");
 
 var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 
@@ -18,34 +19,90 @@ let descriptions = ['Comparative analysis of Euler, Euler-Richardson, Verlet and
 
 let totalProjects = titles.length;
 
-function update(index) {
+for (let i = 0; i < totalProjects; ++i) {
+    dots.innerHTML += `<div id="dot${i + 1}" class="dot"></div>`;
+}
+
+function calculateLength() {
+    return 10 * totalProjects + (totalProjects - 1) * 6;
+}
+
+function update_status() {
+    let galleryWidth = document.getElementById("project-container").offsetWidth;
+    dots.style.position = "relative";
+    dots.style.left = `${(galleryWidth - calculateLength()) / 2}px`;
+}
+setInterval(update_status, 100);
+
+let galleryWidth = document.getElementById("project-container").offsetWidth;
+dots.style.position = "relative";
+dots.style.left = `${(galleryWidth - calculateLength()) / 2}px`;
+
+let dot_elements = []
+for (let i = 0; i < totalProjects; ++i) {
+    let tmp = document.getElementById(`dot${i + 1}`);
+    dot_elements.push(tmp);
+}
+
+dot_elements[0].style.backgroundColor = "lime";
+
+function update(index, current_index) {
     image.src = `src/images/${images[index]}`;
     title.innerHTML = titles[index];
     description.innerHTML = descriptions[index];
+    dot_elements[current_index].style.backgroundColor = "black";
+    dot_elements[index].style.backgroundColor = "lime";
+}
+
+previous.onclick = () => {
+    let current_index = currentProject;
+    currentProject--;
+        if (currentProject < 0) {
+            currentProject = totalProjects - 1;
+        }
+        update(currentProject, current_index);
+}
+
+next.onclick = () => {
+    let current_index = currentProject;
+    currentProject++;
+        if (currentProject > totalProjects - 1) {
+            currentProject = 0;
+        }
+        update(currentProject, current_index);
+} 
+
+for (let i = 0; i < totalProjects; ++i) {
+    dot_elements[i].onclick = () => {
+        let current_index = currentProject;
+        currentProject = i;
+        update(currentProject, current_index);
+    }
 }
 
 document.onkeydown = checkKey;
 
 function checkKey(e) {
     e = e || window.event;
+    let current_index = currentProject;
     if (e.keyCode === 37) {
         currentProject--;
         if (currentProject < 0) {
             currentProject = totalProjects - 1;
         }
-        update(currentProject);
+        update(currentProject, current_index);
     } else if (e.keyCode === 39) {
         currentProject++;
         if (currentProject > totalProjects - 1) {
             currentProject = 0;
         }
-        update(currentProject);
+        update(currentProject, current_index);
     } else {
         currentProject++;
         if (currentProject > totalProjects - 1) {
             currentProject = 0;
         }
-        update(currentProject);
+        update(currentProject, current_index);
     }
 }
 
@@ -68,12 +125,13 @@ gestureZone.addEventListener('touchend', function(event) {
 }, false); 
 
 function handleGesture() {
+    let current_index = currentProject
     if (touchendX <= touchstartX && ((touchstartX - touchendX) / (Math.abs(touchstartY - touchendY))) >= 1.6) {
         currentProject++;
         if (currentProject > totalProjects - 1) {
             currentProject = 0;
         }
-        update(currentProject);
+        update(currentProject, current_index);
     }
     
     if (touchendX >= touchstartX && ((touchendX - touchstartX) / (Math.abs(touchstartY - touchendY))) >= 1.6) {
@@ -81,6 +139,6 @@ function handleGesture() {
         if (currentProject < 0) {
             currentProject = totalProjects - 1;
         }
-        update(currentProject);
+        update(currentProject, current_index);
     }
 }
