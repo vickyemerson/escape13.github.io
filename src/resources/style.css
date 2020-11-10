@@ -12,6 +12,7 @@ body {
 	color: white;
 	height: 100%;
 	overflow: hidden;
+	
 }
 
 a {
@@ -45,7 +46,6 @@ a {
 	height: 54vh;
 	border: 1px solid lime;
 	flex-grow: 1;
-	padding-bottom: 12px;
 }
 
 .project-container {
@@ -53,8 +53,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	background-color: black;
-	align-items: stretch;
-	flex-grow: 1;
+	
 }
 
 .project {
@@ -114,6 +113,10 @@ a {
 	 display: inline-block;
 	 margin-left: 3px;
 	 margin-right: 3px;
+	 margin-bottom: 20px;
+	 margin-top: auto;
+	 position: relative;
+	 top: 20px;
  }
 
 

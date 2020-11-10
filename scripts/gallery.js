@@ -27,13 +27,6 @@ function calculateLength() {
     return 15 * totalProjects + (totalProjects - 1) * 6;
 }
 
-function update_status() {
-    let galleryWidth = document.getElementById("project-container").offsetWidth;
-    dots.style.position = "relative";
-    dots.style.left = `${(galleryWidth - calculateLength()) / 2}px`;
-}
-setInterval(update_status, 100);
-
 let galleryWidth = document.getElementById("project-container").offsetWidth;
 dots.style.position = "relative";
 dots.style.left = `${(galleryWidth - calculateLength()) / 2}px`;
@@ -45,6 +38,18 @@ for (let i = 0; i < totalProjects; ++i) {
 }
 
 dot_elements[0].style.backgroundColor = "lime";
+
+function update_status() {
+    let galleryWidth = document.getElementById("project-container").offsetWidth;
+    dots.style.position = "relative";
+    dots.style.left = `${(galleryWidth - calculateLength()) / 2}px`;
+    let galleryHeight = document.getElementById("outer-project").offsetHeight;
+    let projectHeight = document.getElementById("project").offsetHeight;
+    for (let i = 0; i < totalProjects; ++i) {
+        dot_elements[i].style.top = `${galleryHeight - projectHeight - 40}px`
+    }
+}
+setInterval(update_status, 100);
 
 function update(index, current_index) {
     image.src = `src/images/${images[index]}`;
@@ -61,6 +66,7 @@ previous.onclick = () => {
             currentProject = totalProjects - 1;
         }
         update(currentProject, current_index);
+        update_status();
 }
 
 next.onclick = () => {
@@ -70,6 +76,7 @@ next.onclick = () => {
             currentProject = 0;
         }
         update(currentProject, current_index);
+        update_status();
 } 
 
 for (let i = 0; i < totalProjects; ++i) {
@@ -77,6 +84,7 @@ for (let i = 0; i < totalProjects; ++i) {
         let current_index = currentProject;
         currentProject = i;
         update(currentProject, current_index);
+        update_status();
     }
 }
 
@@ -91,18 +99,21 @@ function checkKey(e) {
             currentProject = totalProjects - 1;
         }
         update(currentProject, current_index);
+        update_status();
     } else if (e.keyCode === 39) {
         currentProject++;
         if (currentProject > totalProjects - 1) {
             currentProject = 0;
         }
         update(currentProject, current_index);
+        update_status();
     } else {
         currentProject++;
         if (currentProject > totalProjects - 1) {
             currentProject = 0;
         }
         update(currentProject, current_index);
+        update_status();
     }
 }
 
@@ -132,6 +143,7 @@ function handleGesture() {
             currentProject = 0;
         }
         update(currentProject, current_index);
+        update_status();
     }
     
     if (touchendX >= touchstartX && ((touchendX - touchstartX) / (Math.abs(touchstartY - touchendY))) >= 1.6) {
@@ -140,5 +152,6 @@ function handleGesture() {
             currentProject = totalProjects - 1;
         }
         update(currentProject, current_index);
+        update_status();
     }
 }
