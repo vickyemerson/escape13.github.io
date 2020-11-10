@@ -134,19 +134,19 @@ a {
 	 .outer-project {
 		width: 94%;
 		left: 3%;
-		height: 44vh;
+		height: 42vh;
 	 }
 	 .project-image {
-		height: 25vh;
+		height: 22vh;
 	 }
 	 .project-title {
-		 font-size: 70%;
+		 font-size: 75%;
 	 }
 	 .project-description {
 		 font-size: 55%;
 	 }
 	 #previous, #next {
-		padding-top: 22vh;
+		padding-top: 21vh;
 	 }
 	 body {
 		 overflow: hidden;
@@ -200,7 +200,7 @@ a {
 
 @media only screen and (max-height: 1367px) and (min-height: 670px) and (orientation: portrait) {
 	.project-image {
-		height: 22vh;
+		height: 19vh;
 	}
 	.arrow-left, .arrow-right {
 		display: none;
