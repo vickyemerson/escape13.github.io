@@ -24,7 +24,7 @@ for (let i = 0; i < totalProjects; ++i) {
 }
 
 function calculateLength() {
-    return 10 * totalProjects + (totalProjects - 1) * 6;
+    return 15 * totalProjects + (totalProjects - 1) * 6;
 }
 
 function update_status() {
