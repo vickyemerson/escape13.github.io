@@ -11,7 +11,6 @@ body {
 	margin: 0;
 	color: white;
 	height: 100%;
-	overflow: hidden;
 	
 }
 
@@ -19,232 +18,123 @@ a {
 	color: white;
 }
 
+.bio {
+	background-color: black;
+}
+
+.bio p {
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-bottom: 25px;
+	padding-right: 60%;
+}
+
 #title {
 	color: Lime;
 	margin: 0;
-	padding: 0;
+	padding-left: 30px;
+	padding-top: 30px;
 	font-size: 175%;
+	background-color: black;
 }
 
 .container {
 	display: flex;
 	flex-direction: column;
-	padding: 30px;
 	background-color: black;
-	height: 100%;
-
+	width: 50%;
 }
 
-.outer-project {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	background-color: black;
-	width: 60%;
-	left: 20%;
-	top: 2vh;
-	height: 54vh;
-	border: 1px solid lime;
-	flex-grow: 1;
-}
 
-.project-container {
-	position: relative;
+.image {
 	display: flex;
+	background-color: black;
 	flex-direction: row;
-	background-color: black;
-	
+	width: 100%;
+	padding-top: 20px;
 }
 
-.project {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+#protein {
+	margin-left: 10%;
+	width: 250px;
+	height: 250px;
 }
 
-.project-title {
-	margin-top: 0;
+#education, #socials {
+	margin-left: 20%;
 }
 
-.project-title a {
+.commandline {
+	display: inline;
+}
+
+.output {
 	color: lime;
 }
 
-.project-image {
-	margin: 20px;
-	height: 27vh;
-	width: auto;
-}
-
-.project-description {
-	font-size: 80%;
-	font-weight: lighter;
-	margin-top: 0;
-	margin-bottom: 10px;
-	text-align: center;
-}
-
- #button-text {
-	font-size: 150%;
-	color: lime;
- }
-
- .arrow-left, .arrow-right {
-	color: lime;
-	margin: auto 15px;
-	font-size: 150%;
- }
- 
- #previous, #next {
-	height: 100%;
-	padding-top: 27vh;
- }
- .project-container span {
-	 padding: 0 5px;
- }
-
- .dot {
-	 border-radius: 50%;
-	 background-color: black;
-	 border: 1px solid lime;
-	 width: 15px;
-	 height: 15px;
-	 display: inline-block;
-	 margin-left: 3px;
-	 margin-right: 3px;
-	 margin-bottom: 20px;
-	 margin-top: auto;
-	 position: relative;
-	 top: 20px;
- }
+.cursor::after {
+	content:'';
+	display:inline-block;
+	margin-left:3px;
+	background-color:lime;
+	animation-name:blink;
+	animation-duration:0.7s;
+	animation-iteration-count: infinite;
+  }
+  h1.cursor::after {
+	height:19px;
+	width:10px;
+  }
+  h2.cursor::after {
+	height:13px;
+	width:6px;
+  }
+  
+  @keyframes blink {
+	0% {
+	  opacity:1;
+	}
+	49% {
+	  opacity:1;
+	}
+	50% {
+	  opacity:0;
+	}
+	100% {
+	  opacity:0;
+	}
+  }
 
 
-
- @media only screen and (max-width: 1242px) and (max-height: 2688px) and (orientation: portrait) {
-	 .arrow-left, .arrow-right {
-		 display: none;
-	 }
- }
  
  @media only screen and (max-width: 770px){
 	 #title {
 		 font-size: 140%;
 	 }
+
+	 .container {
+		 width: 100%;
+	 }
+
+	 .bio p {
+		 padding-right: 10%;
+	 }
+	 
 	 #education, #socials {
-		 font-size: 70%;
+		 margin-left: 10%;
 	 }
-	 .outer-project {
-		width: 94%;
-		left: 3%;
-		height: 42vh;
+
+	 #protein {
+		 display: none;
 	 }
-	 .project-image {
-		height: 22vh;
-	 }
-	 .project-title {
-		 font-size: 75%;
-	 }
-	 .project-description {
-		 font-size: 55%;
-	 }
-	 #previous, #next {
-		padding-top: 21vh;
-	 }
-	 body {
-		 overflow: hidden;
-	 }
-	 .project-container span {
-		padding: 0;
-	}
  }
 
  @media only screen and (max-height: 670px) {
 	#title {
 		font-size: 140%;
 	}
-	#education, #socials {
-		font-size: 70%;
-	}
-	.outer-project {
-	   width: 94%;
-	   left: 3%;
-	   height: 50vh;
-	}
-	.project-container {
-		width: 94%;
-		left: 3%;
-	}
-	.project-image {
-	   height: 20vh;
-	}
-	.project-title {
-		font-size: 70%;
-	}
-	.project-description {
-		font-size: 50%;
-	}
-	#previous, #next {
-	   padding-top: 25vh;
-	}
-	body {
-		overflow: hidden;
-	}
-	.project-container span {
-	   padding: 0;
-   }
+
  }
 
- @media only screen and (max-width: 1025px) and (orientation: landscape){
-	.project-image {
-		height: 22vh;
-	}
-}
 
-@media only screen and (max-height: 1367px) and (min-height: 670px) and (orientation: portrait) {
-	.project-image {
-		height: 19vh;
-	}
-	.arrow-left, .arrow-right {
-		display: none;
-	}
-	.project {
-		width: 90%;
-		margin: auto;
-	}
-}
-
-
-
-
-@media only screen and (max-width: 830px) and (orientation: landscape) {
-	.container {
-		display: none;
-	}
-
-	.outer-project {
-		position: absolute;
-		margin: auto;
-		top: 16vh;
-		height: 76vh;
-	}
-
-	.project-title {
-		font-size: 80%;
-	}
-
-	.project-description {
-		font-size: 60%;
-	}
-
-	.project-image {
-		height: 34vh;
-	}
-	#previous, #next {
-		padding-top: 38vh;
-	 }
-
-	 body {
-		 overflow: hidden;
-	 }
-}

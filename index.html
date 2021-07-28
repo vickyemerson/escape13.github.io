@@ -10,30 +10,34 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<h1 id="title">Hello! Name's<br><span id="name">Victoria Valeeva</span></h1>
-			<h4 id="education"><a href="https://kpfu.ru/liceum">Lobachevsky Lyceum KFU</a> <br> (Grade 11, 2021)</h4>
-			<p id="socials">
-				<a href="https://github.com/vickyemerson"><b>GitHub</b></a>, <a href="https://www.behance.net/vicval"><b>Behance</b></a>, <a href="src/VictoriaResume.pdf" target="_blank"><b>resume</b></a>
+		<h1 id="title">Hello! Name's<br><span id="name">Victoria Valeeva</span></h1>
+		
+		<div class="image">
+			<div class="container">
+				<h4 id="education"><a href="https://utoronto.ca">University of Toronto</a> <br> Molecular Biology, 2025</h4>
+				<p id="socials">
+					<a href="https://github.com/vickyemerson"><b>GitHub</b></a>, <a href="https://www.behance.net/vicval"><b>Behance</b></a>, <a href="src/VictoriaResume.pdf" target="_blank"><b>resume</b></a>
+					<br>
+					contact me: <a href="mailto:vicky@escape13.me">vicky@escape13.me</a>
+				</p>
 				<br>
-				contact me: <a href="mailto:vicky@escape13.me">vicky@escape13.me</a>
-			</p>
-		</div>
-		<div id="outer-project" class="outer-project">
-			<div class="project-container" id="project-container">
-				<div id="previous" class="arrow-left"><span id="arrow-left"><</span></div>
-				<div id="project" class="project">
-					<img id="project-image" class="project-image" src="src/images/research.jpeg">
-					<h3 id="project-title" class="project-title"><a href="https://github.com/vickyemerson/research" target="_blank">Research on Numerical Methods</a></h3>
-					<p id="project-description" class="project-description">Comparative analysis of Euler, Euler-Richardson, Verlet and Runge-Kutta methods. <a href="https://github.com/vickyemerson/research/blob/master/analysis_eng.pdf">Click here to read.</a></p>
+				<br>
+				<div class="output" id="output">
+					<h1 class="cursor" id="title">~$ </h1>
 				</div>
-				<div id="next" class="arrow-right"><span id="arrow-right">></span></div>
 			</div>
-			<div id="dots" class="dots"></div>
+			<img src="./src/images/pdz2.gif" id="protein">
 		</div>
 
+		<div class="bio">
+			<p>Student at the University of Toronto with aspirations of doing research in computational biology and sticking to a New Year's resolution of never selling my soul to tech or finance. Love all things computer, science, and computer science.</p>
+			<p>Currently studying the dynamics of protein crystals at <a href="https://rauscher-group.physics.utoronto.ca/">the lab of Dr. Sarah Rauscher</a>.</p>
+			<p>If you're very lucky, you can find me either speculating about the absurdity of the current state of affairs using critical theory terminology or just sleeping.</p>
+		</div>
+		
+		<script src="scripts/typewriter.js"></script>
 		<script src="scripts/blink.js"></script>
-		<script src="scripts/gallery.js"></script>
+		
 	</body>
 
 </html>
