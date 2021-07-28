@@ -1,3 +1,4 @@
+
 // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
 var i = 0,
     a = 0,
@@ -16,7 +17,6 @@ var speedForward = 500, //Typing Speed
     speedBackspace = 25; //Backspace Speed
 
 //Run the loop
-typeWriter("output", textArray);
 
 function typeWriter(id, ar) {
   var element = $("#" + id),
@@ -54,3 +54,6 @@ function typeWriter(id, ar) {
     }
   }
 }
+
+
+window.onload = typeWriter("output", textArray);

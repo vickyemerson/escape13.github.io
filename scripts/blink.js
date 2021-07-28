@@ -1,3 +1,4 @@
+window.onload = function() {
 $(function () { 
   count = 0; 
   wordsArray = ["Victoria Valeeva", "escape13"]; 
@@ -8,3 +9,4 @@ $(function () {
     }); 
    }, 3500); 
 }); 
+}
