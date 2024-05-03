@@ -21,7 +21,7 @@ camera.position.z = 1.75;
 
 camera.lookAt(new THREE.Vector3(0, 0 , 0));
 
-
+/*
 
 const loader = new GLTFLoader();
 
@@ -43,3 +43,21 @@ loader.load( '/protein.glb', function ( gltf ) {
 	console.error( error );
 
 } );
+
+*/
+
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+function animate() {
+	requestAnimationFrame( animate );
+
+	cube.rotation.x += 0.01;
+	cube.rotation.y += 0.01;
+
+	renderer.render( scene, camera );
+}
+
+animate();
