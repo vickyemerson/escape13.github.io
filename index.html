@@ -11,6 +11,7 @@
 		<script src="scripts/typewriter.js" defer></script>
 	</head>
 	<body>
+		<script type="module" src="./main.js"></script>
 		<h1 id="title"><span id="name">Victoria Valeeva</span></h1>		
 		<div class="image">
 			<div class="container">
@@ -36,11 +37,60 @@
 			<p>I am an undergraduate student of statistics
 				at the University of Toronto. My acacdemic interests include
 				molecular dynamics, statistical mechanics, and
-			 	computational biology.
+			 	computational biology.<br><br> This summer I will be joining
+				the <a href="https://ccglab-uhn.github.io/" target="_blank">Computational Cancer Genomics Group</a>
+				led by Dr. Sushant Kumar at the Princess Margaret Cancer Center, where I will be working on
+				machine learning models for prediction of catalytic constants.
 			</p>
 		</div>
-		
-		
+		<h1 id="title" class="research_title">[] research</h1>
+		<div class="image">
+			<div class="container">
+				<p id="research_description">
+					Throughout my first two years in university,
+					I was working in the <a href="https://rauscher-group.physics.utoronto.ca/" target="_blank"
+					>computational biophysics
+					lab</a> led by Dr. Sarah Rauscher, where I worked on two projects:
+					<br><br>
+					1. An <a href="https://www.nature.com/articles/nature20571" target="_blank">X-Ray crystallography experiment</a> that applied an
+					electric field to a protein crystal was conducted 
+					by Hekstra et al. to provide a new method of studying 
+					protein function. The lab recreated that experiment <a href="https://www.cell.com/biophysj/fulltext/S0006-3495(19)33711-7" target="_blank">in 
+					silico</a>, using molecular dynamics - a computer simulation 
+					method for analyzing the physical movements of atoms 
+					and molecules, and provided extensive sampling. My goal was to understand the dynamics
+					of that protein crystal, for which I deployed Markov state models - a statistical
+					approach to clustering the protein's conformational ensemble into
+					distinct low-energy states and calculating the probability of transition between them.
+
+				</p>
+				
+			</div>
+			<div id="protein_render"></div>
+			<br>
+		</div>
+		<div class="image_autoencoder">
+			<img src="./src/images/autoencoder.svg" id="autoencoder_pic">
+			<div class="container">
+				<p id="autoencoder_description">
+					2. Dimensionality reduction is a statistical method
+					that attempts to find a more compact representation
+					of data that preserves its geometry. One of the 
+					popular approaches for dimensionality reduction is autoencoders - 
+					feed-forward neural networks that become narrow in the middle and
+					then expand again. By defining the loss function as the error
+					of data reconstruction and training the network, we attempt
+					to produce data of reduced dimension in the latent space - the bottleneck in the middle.
+					Hernández et al. <a href="https://arxiv.org/abs/1711.08576" target="_blank">adapted this idea</a> for the analysis of molecular dynamics simulations.
+					<a href="https://drive.google.com/file/d/1eZEZW900nRzx1ER5JEky23MYygDEftJw/view?usp=sharing" target="_blank">We verified</a> their architecture on several simple proteins and a PDZ domain.
+					Additionally, we augmented the architecture of the Variational Dynamics Encoder with an Equivariant Graph Neural Network.
+					
+
+				</p>
+				
+			</div>
+			<br>
+		</div>
 	</body>
 
 </html>

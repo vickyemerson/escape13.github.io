@@ -12,6 +12,7 @@ body {
 
 a {
 	color: white;
+	text-decoration-thickness: 0.4px;
 }
 
 .bio {
@@ -42,8 +43,23 @@ a {
 	width: 50%;
 }
 
+#research_description {
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-bottom: 25px;
+	width: 350px
+}
+
 
 .image {
+	display: flex;
+	background-color: black;
+	flex-direction: row;
+	width: 100%;
+	padding-top: 20px;
+}
+.image_autoencoder {
 	display: flex;
 	background-color: black;
 	flex-direction: row;
@@ -68,6 +84,26 @@ a {
 
 .output {
 	color: lime;
+}
+
+#autoencoder_pic {
+	width:400px;
+	height:400px;
+	
+}
+
+#autoencoder_description {
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-bottom: 25px;
+	padding-right: 10px;
+}
+
+#protein_render {
+	margin-left: 5%;
+	width: 400px;
+	height: 400px;
 }
 
 .cursor::after {
@@ -105,7 +141,7 @@ a {
 
 
  
- @media only screen and (max-width: 500px){
+ @media only screen and (max-width: 700px){
 	 #title {
 		 font-size: 120%;
 	 }
@@ -127,12 +163,36 @@ a {
 		flex-direction: column;
 	 }
 
+	 .image_autoencoder {
+		flex-direction: column-reverse;
+	 }
+
 	 #protein {
 		width: 200px;
 		height: 200px;
 		margin-left: auto;
 		margin-right: auto;
 	 }
+	 #protein_render {
+		width: 300px;
+		height: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#research_description {
+		width: unset;
+		padding-right: 10%;
+	}
+	#autoencoder_pic {
+		width: 300px;
+		height: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#autoencoder_description {
+		width:unset;
+		padding-right: 10%;
+	}
  }
 
 

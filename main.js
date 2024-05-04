@@ -2,11 +2,13 @@ import * as THREE from '/three/build/three.module.js';
 import { GLTFLoader } from '/three/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight);
-document.body.appendChild( renderer.domElement );
+const container = document.getElementById( 'protein_render' );
+const camera = new THREE.PerspectiveCamera( 30, container.clientWidth / container.clientHeight);
+const renderer = new THREE.WebGLRenderer( {antialias: true} );
+renderer.setSize( container.clientWidth, container.clientHeight);
+
+container.appendChild( renderer.domElement );
 
 const light1 = new THREE.PointLight( 0xffffff, 10, 100 );
 light1.position.set( -1, 0, 2 );
@@ -16,10 +18,12 @@ const light2 = new THREE.PointLight( 0xffffff, 10, 100 );
 light2.position.set( 1, 1, 2 );
 scene.add( light2 );
 
-camera.position.z = 1.75;
+camera.position.z = 3.8;
 
 camera.lookAt(new THREE.Vector3(0, 0 , 0));
 
+const header = document.getElementsByClassName("research_title")[0]
+console.log(header)
 
 const loader = new GLTFLoader();
 
@@ -31,7 +35,8 @@ loader.load( '/protein.glb', function ( gltf ) {
 
     const animate = function () {
         requestAnimationFrame( animate );
-        protein.rotation.y += 0.01;
+        var value = window.pageYOffset;
+        protein.rotation.y = value / 150
         renderer.render( scene, camera );
     }
     animate();
