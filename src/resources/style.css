@@ -23,7 +23,7 @@ a {
 	padding-top: 10px;
 	padding-left: 50px;
 	padding-bottom: 25px;
-	padding-right: 60%;
+	width: 400px
 }
 
 #title {
@@ -58,7 +58,8 @@ a {
 }
 
 #education, #socials {
-	margin-left: 20%;
+	margin: 0;
+	padding-left: 30px;
 }
 
 .commandline {
@@ -106,7 +107,7 @@ a {
  
  @media only screen and (max-width: 500px){
 	 #title {
-		 font-size: 140%;
+		 font-size: 120%;
 	 }
 
 	 .container {
@@ -114,6 +115,7 @@ a {
 	 }
 
 	 .bio p {
+		 width: unset;
 		 padding-right: 10%;
 	 }
 	 
