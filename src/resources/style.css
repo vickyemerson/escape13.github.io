@@ -1,9 +1,5 @@
 html {
-	background: url("../../src/images/background.jpg") no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-color: black;
 }
 
 body {
@@ -125,8 +121,15 @@ a {
 		 margin-left: 10%;
 	 }
 
+	 .image {
+		flex-direction: column;
+	 }
+
 	 #protein {
-		 display: none;
+		width: 200px;
+		height: 200px;
+		margin-left: auto;
+		margin-right: auto;
 	 }
  }
 
